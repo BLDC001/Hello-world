@@ -1,0 +1,249 @@
+/*******************************************************************************
+Project:   FOC control(id = 0 Ld=Lq)
+Author:    Zhang Lipu
+Company:   JS education 冀石教育
+MCU:       dsPIC33EP128MC506
+Filename:  Sfr.h
+Function:  寄存器配置宏定义
+Date:      2nd May 2021
+Version:   R01
+*******************************************************************************/
+
+/*----------------------------------------------------------------------------*/
+#ifndef SFR_H
+#define	SFR_H
+/*----------------------------------------------------------------------------*/
+#include "..\include\User.h"
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+
+/*---------------------PORTA-------------------------------*/
+/*
+ * RA0 -Ia(AN0)(I)      RA1 -Ib(AN1)(I)      RA4 - SPI1_SDO(O)    RA7 - NC(I)   
+ * RA8 - RX(I)         RA9 - SPI1_CS1(O)    RA10 - NC(I)         RA11 - NC(I)         
+ * RA12 - NC(I)    
+ */
+#define TRISA_INIT      0xfdef
+#define PORTA_INIT      0x0000
+#define LATA_INIT       0x0000
+#define ODCA_INIT       0x0000
+#define CNENA_INIT      0x0000
+#define CNPUA_INIT      0x0000
+#define CNPDA_INIT      0x0000
+#define ANSELA_INIT     0x0003
+/*----------------------------------------------------------------------------*/
+/*---------------------PORTB-------------------------------*/
+/*
+ * RB0 -Ic(AN2)(I)      RB1 -Voltage(AN3)(I)      RB2 - ACCELE(AN4)(I)    
+ * RB3 - NC(I)          RB4 - TX(O)               RB5 -PGD(I)          
+ * RB6 -PGC(I)          RB7 - CAN_TX(O)           RB8 - CVREF1O(I)     
+ * RB9 - NC(I)          RB10 -PWM3H(O)            RB11 -PWM3L(O)            
+ * RB12 - PWM2H(O)      RB13 - PWM2L(O)           RB14 - PWM1H(O)  
+ * RB15 - PWM1L(O) 
+ */
+#define TRISB_INIT      0x036f
+#define PORTB_INIT      0x0000
+#define LATB_INIT       0x0000
+#define ODCB_INIT       0x0000
+#define CNENB_INIT      0x0000
+#define CNPUB_INIT      0x0000
+#define CNPDB_INIT      0x0000
+#define ANSELB_INIT     0x0107
+/*----------------------------------------------------------------------------*/
+/*---------------------PORTC-------------------------------*/
+/*
+ * RC0 -Ibus(AN6)(I)    RC1 - KEY1(I)       RC2 - KEY2(I)      RC3 - SPI1_SCK(O)    
+ * RC4 - FLT(I)         RC5 - NC(I)         RC6 - SPI2_SDO(O)  RC7 - SPI2_CS(O)   
+ * RC8 - SPI2_SCK(O)    RC9 -OC1(O)         RC10 - CAN_RX(I)   RC11 - KEY3(I)      
+ * RC12 - OSC1(I)       RC13 - NC(I)        RC15 - OSC2(I)
+ */
+#define TRISC_INIT      0xfc37
+#define PORTC_INIT      0x0000
+#define LATC_INIT       0x0000
+#define ODCC_INIT       0x0000
+#define CNENC_INIT      0x0000
+#define CNPUC_INIT      0x0000
+#define CNPDC_INIT      0x0000
+#define ANSELC_INIT     0x0001
+/*----------------------------------------------------------------------------*/
+/*---------------------PORTD-------------------------------*/
+/*
+ * RD5 -NC(I)    RD6 - NC(I)       RD8 - SPI1_CS2(O) 
+ */
+#define TRISD_INIT      0xfeff
+#define PORTD_INIT      0x0000
+#define LATD_INIT       0x0000
+#define ODCD_INIT       0x0000
+#define CNEND_INIT      0x0000
+#define CNPUD_INIT      0x0000
+#define CNPDD_INIT      0x0000
+/*----------------------------------------------------------------------------*/
+/*---------------------PORTE-------------------------------*/
+/*
+ * RE12 - LED0(O)      RE13 - LED1(O)      RE14 - LED2(O)         RE15 - LED3(O)
+ */
+#define TRISE_INIT      0x0fff
+#define PORTE_INIT      0xf000
+#define LATE_INIT       0xf000
+#define ODCE_INIT       0x0000
+#define CNENE_INIT      0x0000
+#define CNPUE_INIT      0x0000
+#define CNPDE_INIT      0x0000
+#define ANSELE_INIT     0x0000
+/*----------------------------------------------------------------------------*/
+/*---------------------PORTG-------------------------------*/
+/*
+ * RG6 - HALLW(I)      RG7 - HALLV(I)      RG8 - HALLU(I)         RG9 - NC(I)
+ */
+#define TRISG_INIT      0xffff
+#define PORTG_INIT      0x0000
+#define LATG_INIT       0x0000
+#define ODCG_INIT       0x0000
+#define CNENG_INIT      0x0000
+#define CNPUG_INIT      0x0000
+#define CNPDG_INIT      0x0000
+/*----------------------------------------------------------------------------*/
+/*---------------------外设引脚选择功能寄存器宏定义---------------------------*/
+//外设引脚选择功能输入寄存器初始值宏定义
+#define RPINR0_INIT     0x0000      //INT1R unused 外部中断1分配给对应RPn引脚
+#define RPINR1_INIT     0x0000      //INT2R unused 外部中断2分配给对应RPn引脚
+#define RPINR3_INIT     0x0000      //T2CKR unused 将Timer2外部时钟分配给对应RPn引脚
+#define RPINR7_INIT     0x7778      //IC2 used RPI119  IC1 used RP120
+#define RPINR8_INIT     0x0076      //IC4 unused       IC3 used RP118
+#define RPINR11_INIT    0x0000      //OCFAR unused
+#define RPINR12_INIT    0x0034      //FLT2R unused  FLT1R used FLT1 RPI52
+#define RPINR14_INIT    0x0000      //QEB1R unused  QEA1R unused 
+#define RPINR15_INIT    0x0000      //HOME1R unused  IND1XR unused
+#define RPINR18_INIT    0x0000      //U1RXR  unused
+#define RPINR19_INIT    0x0018      //U2RXR  used RPI24
+#define RPINR22_INIT    0x0000      //SPI2 SCK unused SPI2 SDO unused
+#define RPINR23_INIT    0x0000      //SPI2 /SS2 unused
+#define RPINR26_INIT    0x0000      //C1RXR unused
+#define RPINR37_INIT    0x0000      //SYNCI1R unused
+#define RPINR38_INIT    0x0000      //DTCMP1R unused
+#define RPINR39_INIT    0x0000      //DTCMP3R unused DTCMP2R unused
+//外设引脚选择功能输出寄存器初始值宏定义
+#define RPOR0_INIT      0x0000      //RP35R unused  RP20R unused
+#define RPOR1_INIT      0x0003      //RP37R unused  RP36R used UART2 TX
+#define RPOR2_INIT      0x0000      //RP39R unused  RP38R unused
+#define RPOR3_INIT      0x0000      //RP41R unused  RP40R unused
+#define RPOR4_INIT      0x0000      //RP43R unused  RP42R unused
+#define RPOR5_INIT      0x0000      //RP55R unused  RP54R unused
+#define RPOR6_INIT      0x1000      //RP57R used  RP56R unused
+#define RPOR7_INIT      0x0000      //RP97R unused 
+#define RPOR8_INIT      0x0000      //RP118R unused  
+#define RPOR9_INIT      0x0000      //RP120R unused  
+/*----------------------------------------------------------------------------*/
+/*---------------------SPI1初始值宏定义-------------------------------*/
+#define SPI1STAT_INIT   0x0000
+#define SPI1CON1_INIT   0x047e
+#define SPI1CON2_INIT   0x0000
+/*----------------------------------------------------------------------------*/
+/*---------------------定时器3初始值宏定义------------------------------------*/
+//在空闲模式下定时器模块继续工作，选择外设时钟Fp作为定时器3的时钟源，
+//选择定时器3的预分频比为1:256
+#define T3CON_INIT      0x0030 
+//计数器的初始值设为0
+#define TMR3_INIT       0x0000
+//外设时钟256分频之后，得到4.27us，设定周期寄存器值为234，这样实现1ms
+#define PR3_INIT        0x00EA
+/*----------------------------------------------------------------------------*/
+
+/*--------------------输入捕捉模块控制寄存器初始值宏定义----------------------*/
+#define IC1CON1_INIT    0x0001
+#define IC1CON2_INIT    0x0000
+#define IC2CON1_INIT    0x0001
+#define IC2CON2_INIT    0x0000
+#define IC3CON1_INIT    0x0001
+#define IC3CON2_INIT    0x0000
+/*----------------------------------------------------------------------------*/
+
+/*--------------------串口2寄存器初始值宏定义---------------------------------*/
+//U2BRG = (Fcy/(16*波特率))-1  = (60000000 /(16*19200))-1 = 194.3125
+#define U2BRG_INIT      194    
+//8位数据，没有奇偶校验，1个停止位
+#define U2MODE_INIT     0x8000 
+#define U2STA_INIT      0x0400
+/*----------------------------------------------------------------------------*/
+
+/*--------------------PWM模块寄存器初始值宏定义-------------------------------*/
+#define PTCON_INIT      0x0000
+#define PTCON2_INIT     0x0000
+//PWM发生器1寄存器初始值宏定义
+
+//选择独立时基模式 --ITB = 1,PDC1寄存器为PWM发生器1提供占空比信息--MDCS = 0，
+//使用中心对齐模式--CAM = 1
+#define PWMCON1_INIT    0x0204  
+//PWM引脚由PWM模块来控制，PWM输出有效电平是高电平，PWM1H,PWM1L引脚全部由PWM模块
+//进行控制
+#define IOCON1_INIT     0xc000  
+#define FCLCON1_INIT    0x0004  //故障源选择FLT1 故障极性选择为低电平有效，故障模式选择为锁定状态
+//PWM波载波频率是20KHz，PHASE1 = FOSC/（PWM载波频率*2） = 120MHz/（20KHz*2） = 3000
+#define PHASE1_INIT     (PWM_PERIOD_VALUE >>1)   
+#define PDC1_INIT       300     //占空比寄存器初始化为10%
+#define DTR1_INIT       0x0000  //死区寄存器为0
+//2us  ALTDTR1 = FOSC * 死区时间/PWM时钟预分频比 = 120MHz * 2us = 240
+#define ALTDTR1_INIT    DEAD_TIME  
+//TRGDIV<3:0> = 0001,没发生两个触发时间时产生一个触发信号，TRGSTRT<5:0> = 000000,
+//产生第一个触发事件之前不用等待PWM周期
+#define TRGCON1_INIT    0x1000  
+#define TRIG1_INIT      3000    //在PWM1L开通中点ADC结束采样并开始转换
+//PWM发生器2寄存器初始值宏定义
+//选择独立时基模式 --ITB = 1,PDC2寄存器为PWM发生器2提供占空比信息--MDCS = 0，
+//使用中心对齐模式--CAM = 1
+#define PWMCON2_INIT    0x0204  
+#define IOCON2_INIT     0xc000  //PWM引脚由PWM模块来控制，PWM输出有效电平是高电平，PWM2H,PWM2L引脚全部由PWM模块进行控制
+#define FCLCON2_INIT    0x0004  //故障源选择FLT1 故障极性选择为低电平有效，故障模式选择为锁定状态
+#define PHASE2_INIT     (PWM_PERIOD_VALUE >>1)    //PWM波载波频率是20KHz，PHASE2 = FOSC/（PWM载波频率*2） = 120MHz/（20KHz*2） = 3000
+#define PDC2_INIT       300     //占空比寄存器初始化为10%
+#define DTR2_INIT       0x0000  //死区寄存器为0
+#define ALTDTR2_INIT    DEAD_TIME  //2us  ALTDTR2 = FOSC * 死区时间/PWM时钟预分频比 = 120MHz * 2us = 240
+//PWM发生器3寄存器初始值宏定义
+#define PWMCON3_INIT    0x0204  //选择独立时基模式 --ITB = 1,PDC3寄存器为PWM发生器3提供占空比信息--MDCS = 0，使用中心对齐模式--CAM = 1
+#define IOCON3_INIT     0xc000  //PWM引脚由PWM模块来控制，PWM输出有效电平是高电平，PWM3H,PWM3L引脚全部由PWM模块进行控制
+#define FCLCON3_INIT    0x0004  //故障源选择FLT1 故障极性选择为低电平有效，故障模式选择为锁定状态
+#define PHASE3_INIT     (PWM_PERIOD_VALUE >>1)    //PWM波载波频率是20KHz，PHASE3 = FOSC/（PWM载波频率*2） = 120MHz/（20KHz*2） = 3000
+#define PDC3_INIT       300     //占空比寄存器初始化为10%
+#define DTR3_INIT       0x0000  //死区寄存器为0
+#define ALTDTR3_INIT    DEAD_TIME  //2us  ALTDTR3 = FOSC * 死区时间/PWM时钟预分频比 = 120MHz * 2us = 240
+/*----------------------------------------------------------------------------*/
+
+/*-------------------1.65V VREF1O输出寄存器初始值宏定义-----------------------*/
+#define CVRCON_INIT     0x00c8
+/*----------------------------------------------------------------------------*/
+
+//AN0 Ia    AN1 Ib          AN2 Ic
+//AN3 Vbus  AN4 旋钮电压    AN6 Ibus
+#define AD1CON1_INIT    0x001c  //选择10位4通道采样 数据输出格式为无符号整数 PWM发生器1主触发结束采样并开始转换 自动采样
+#define AD1CON2_INIT    0x0200  //转换器参考电压为 VREFH AVDD VREFL AVSS 转换通道选择CH0/1/2/3 使用MUXA选择的输入通道
+#define AD1CON3_INIT    0x0004  //ADC转换的时钟源选择系统时钟 自动采样时间为0TAD ADC转换时钟TAD = 5Tp = 5*16.6ns = 83.3ns
+#define AD1CON4_INIT    0x0000  //不使用DMA
+#define AD1CHS123_INIT  0x0000  //CH1-CH3 MUXA/B 反向输入端选择VREFL 同向输入端选择AN0/AN1/AN2
+#define AD1CHS0_INIT    0x0303  //CH0 MUXA/B 反向输入端选择VREFL 同向输入端选择AN3
+#define AD1CSSH_INIT    0x0000  //没有使用通道扫描
+#define AD1CSSL_INIT    0x0000  //没有使用通道扫描
+/*----------------------------------------------------------------------------*/
+//输出比较寄存器的初始化配置
+#define OC1CON1_INIT    0x1c06  //选择外设时钟作为输出比较模块的时钟源 60MHz 边沿对齐PWM模式
+#define OC1CON2_INIT    0x001f  //OCxRS比较时间用于进行同步
+#define OC1RS_INIT      6000    //PWM周期为6000，产生100KHz的PWM波形
+#define OC1R_INIT       364     //6%占空比 3.3V*6% = 0.2V
+#define OC1TMR_INIT     0       //输出比较模块定时器初始为0
+
+
+/*----------------------------------------------------------------------------*/
+#ifdef	__cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+    // TODO If C++ is being used, regular C code needs function names to have C 
+    // linkage so the functions can be used by the c code. 
+
+#ifdef	__cplusplus
+}
+#endif /* __cplusplus */
+
+
+#endif	/* SFR_H */
+/*----------------------------------------------------------------------------*/
